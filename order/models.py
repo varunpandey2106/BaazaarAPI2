@@ -8,20 +8,7 @@ from user.models import Address
 
 
 class Order(models.Model):
-    """
-    A model to represent an order placed by a user
 
-    Attributes:
-        user (User): user who placed the order
-        billing_address(Address): billing address of the order
-        shipping_address(Address): shipping address of the order
-        created_at (datetime): date and time when the order was created
-        updated_at (datetime): date and time when the order was last updated
-        delivery (char): status of the order delivery, can be one of:
-            - "P" (pending)
-            - "C" (complete)
-            - "F" (failed)
-    """
 
     DELIVERY_PENDING = "P"
     DELIVERY_COMPLETE = "C"
@@ -59,15 +46,7 @@ class Order(models.Model):
 
 
 class OrderItem(models.Model):
-    """
-    A model to represent an item in an order
 
-    Attributes:
-        order (Order): associated order of an item
-        product (Product): product that is being ordered
-        ordered_price (decimal): price of the product when it was ordered
-        quantity (int): quantity of the product that is being ordered
-    """
 
     order = models.ForeignKey(Order, on_delete=models.CASCADE, related_name="items")
     product = models.ForeignKey(
