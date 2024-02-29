@@ -51,7 +51,8 @@ INSTALLED_APPS = [
 
 
     #apps
-    'user'
+    'user',
+    'product'
 ]
 
 AUTHENTICATION_BACKENDS = [
@@ -112,11 +113,26 @@ WSGI_APPLICATION = 'base.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+
 DATABASES = {
+
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'BaazaarAPI',
+        'USER': 'varunpandey',
+        'PASSWORD': 'boombamboom',
+        'HOST': 'localhost',
+        'PORT': '5432',
+
     }
+
 }
 
 
@@ -125,6 +141,8 @@ REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
     
         'rest_framework_simplejwt.authentication.JWTAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+
     )
 
 }
