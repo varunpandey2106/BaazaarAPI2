@@ -42,8 +42,21 @@ INSTALLED_APPS = [
     'rest_framework',
     'django_countries',
     'phonenumber_field',
+    'rest_framework_simplejwt',
+
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.google',
+
+
     #apps
     'user'
+]
+
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
 ]
 
 MIDDLEWARE = [
@@ -54,7 +67,26 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
+    "allauth.account.middleware.AccountMiddleware",
+
 ]
+
+
+SOCIALACCOUNT_PROVIDERS = {
+    'google': {
+        # For each OAuth based provider, either add a ``SocialApp``
+        # (``socialaccount`` app) containing the required client
+        # credentials, or list them here:
+        'APP': {
+            'client_id': '709415842457-ljpfhkmn4dbqnor0s7koe79jgii7ituk.apps.googleusercontent.com',
+            'secret': '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',
+            'key': '',
+            'redirect_uri': 'http://127.0.0.1:8000/accounts/google/login/callback/',
+
+        }
+    }
+}
 
 ROOT_URLCONF = 'base.urls'
 
@@ -87,6 +119,15 @@ DATABASES = {
     }
 }
 
+
+REST_FRAMEWORK = {
+
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+    
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    )
+
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
