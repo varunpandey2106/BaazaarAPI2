@@ -190,3 +190,13 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+import os
+
+STRIPE_SECRET_KEY = os.getenv("SECRET_KEY_STRIPE")
+STRIPE_PUBLISHABLE_KEY = os.getenv("PUBLISHABLE_KEY")
+STRIPE_WEBHOOK_SECRET = os.getenv("STRIPE_WEBHOOK_SECRET")
+
+PAYMENT_SUCCESS_URL = os.getenv("PAYMENT_SUCCESS_URL")
+PAYMENT_CANCEL_URL = os.getenv("PAYMENT_CANCEL_URL")
