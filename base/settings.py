@@ -52,7 +52,8 @@ INSTALLED_APPS = [
 
     #apps
     'user',
-    'product'
+    'product',
+    'order'
 ]
 
 AUTHENTICATION_BACKENDS = [
