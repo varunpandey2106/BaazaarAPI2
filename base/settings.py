@@ -54,7 +54,8 @@ INSTALLED_APPS = [
     'user',
     'product',
     'order',
-    'cart'
+    'cart',
+    'payment'
 ]
 
 AUTHENTICATION_BACKENDS = [
