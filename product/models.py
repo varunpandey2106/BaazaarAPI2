@@ -6,15 +6,7 @@ from django.db.models import Avg
 from .utility import generate_upc
 
 class Category(models.Model):
-    """
-    A model representing a product category
 
-    Attributes:
-        name (str): name of the category
-        description (str): description of the category
-        created_at (date): date when category was created
-        updated_at (date): date when category was last updated
-    """
 
     name = models.CharField(max_length=255, help_text="Enter the category name")
     description = models.TextField(
@@ -35,19 +27,7 @@ class Category(models.Model):
 
 
 class Product(models.Model):
-    """
-    A model representing a product
 
-    Attributes:
-        upc (str): 12 character unique product code
-        name (str): name of the product
-        description (str): description of the product
-        price (decimal): price of the product
-        quantity (int): quantity of the product in stock
-        category (Category):  category to which the product belongs
-        created_at (date): date when the product was created
-        updated_at (date): date when the product was last updated
-    """
 
     upc = models.CharField(max_length=12, unique=True, blank=True)
     name = models.CharField(max_length=255, help_text="Enter the product name")
