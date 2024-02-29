@@ -43,11 +43,11 @@ INSTALLED_APPS = [
     'django_countries',
     'phonenumber_field',
     'rest_framework_simplejwt',
-
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
+    'django_filters',
 
 
     #apps
