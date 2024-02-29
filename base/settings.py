@@ -40,8 +40,8 @@ INSTALLED_APPS = [
 
     #downloads
     'rest_framework',
-    'django_countries'
-    'phonenumber_field'
+    'django_countries',
+    'phonenumber_field',
     #apps
     'user'
 ]
