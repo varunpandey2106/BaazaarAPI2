@@ -48,6 +48,8 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
     'django_filters',
+    'drf_yasg',
+    'djoser',
 
 
     #apps
@@ -200,3 +202,8 @@ STRIPE_WEBHOOK_SECRET = os.getenv("STRIPE_WEBHOOK_SECRET")
 
 PAYMENT_SUCCESS_URL = os.getenv("PAYMENT_SUCCESS_URL")
 PAYMENT_CANCEL_URL = os.getenv("PAYMENT_CANCEL_URL")
+
+
+TWILIO_ACCOUNT_SID = os.getenv("TWILIO_ACCOUNT_SID")
+TWILIO_AUTH_TOKEN = os.getenv("TWILIO_AUTH_TOKEN")
+TWILIO_PHONE_NUMBER=os.getenv("TWILIO_PHONE_NUMBER")
