@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'django_filters',
     'drf_yasg',
     'djoser',
+    'django_twilio',
 
 
     #apps
@@ -57,7 +58,8 @@ INSTALLED_APPS = [
     'product',
     'order',
     'cart',
-    'payment'
+    'payment',
+    'notification'
 ]
 
 AUTHENTICATION_BACKENDS = [
