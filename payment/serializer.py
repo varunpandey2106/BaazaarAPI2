@@ -21,46 +21,39 @@ class WritePaymentSerializer(serializers.ModelSerializer):
         model = Payment
         fields = ["status"]
 
-# import datetime
+##APP DEV CLASS GIT COMMANDS DEMO
 
-# from rest_framework import serializers
+from django.db import transaction
 
+class DepositSerializer(serializers.Serializer):
+    amount = serializers.IntegerField(validators=[is_amount])
+    email = serializers.EmailField()
 
-# def check_expiry_month(value):
-#     if not 1 <= int(value) <= 12:
-#         raise serializers.ValidationError("Invalid expiry month.")
+    def validate_email(self, value):
+        if User.objects.filter(email=value).exists():
+            return value
+        raise serializers.ValidationError({"detail": "Email not found"})
 
+    def save(self):
+        user = self.context["request"].user
 
-# def check_expiry_year(value):
-#     today = datetime.datetime.now()
-#     if not int(value) >= today.year:
-#         raise serializers.ValidationError("Invalid expiry year.")
+        # Ensure atomicity of the operation
+        with transaction.atomic():
+            # Get or create the Wallet object for the user
+            wallet, created = Wallet.objects.get_or_create(user=user)
 
+            # Update balance and create transaction
+            data = self.validated_data
+            url = "https://api.paystack.co/transaction/initialize"
+            headers = {"authorization": f"Bearer {settings.PAYSTACK_SECRET_KEY}"}
+            r = requests.post(url, headers=headers, data=data)
+            response = r.json()
+            WalletTransaction.objects.create(
+                wallet=wallet,
+                transaction_type="deposit",
+                amount=data["amount"],
+                paystack_payment_reference=response["data"]["reference"],
+                status="pending",
+            )
 
-# def check_cvc(value):
-#     if not 3 <= len(value) <= 4:
-#         raise serializers.ValidationError("Invalid cvc number.")
-
-
-# def check_payment_method(value):
-#     payment_method = value.lower()
-#     if payment_method not in ["card"]:
-#         raise serializers.ValidationError("Invalid payment_method.")
-
-# class CardInformationSerializer(serializers.Serializer):
-#     card_number = serializers.CharField(max_length=150, required=True)
-#     expiry_month = serializers.CharField(
-#         max_length=150,
-#         required=True,
-#         validators=[check_expiry_month],
-#     )
-#     expiry_year = serializers.CharField(
-#         max_length=150,
-#         required=True,
-#         validators=[check_expiry_year],
-#     )
-#     cvc = serializers.CharField(
-#         max_length=150,
-#         required=True,
-#         validators=[check_cvc],
-#     )
+        return response
