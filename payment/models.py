@@ -1,6 +1,8 @@
 from django.db import models
 from django.utils.functional import cached_property
-
+from django.db import models
+from django.contrib.auth.models import User
+from django.utils import timezone
 from order.models import Order
 
 
@@ -51,18 +53,29 @@ class Payment(models.Model):
         return f"{str(self.order)}_{str(self.status)}"
 
 
-# from django.db import models
-# from user.models import User
-# from django.dispatch import receiver
-# from django.db.models.signals import post_save
+class Wallet(models.Model):
+    user = models.OneToOneField(
+        User, null=True, on_delete=models.CASCADE)
+    currency = models.CharField(max_length=50, default='NGN')
+    created_at = models.DateTimeField(default=timezone.now, null=True)
+    
+    def __str__(self):
+        return self.user.__str__()
 
-# class UserPayment(models.Model):
-# 	user = models.ForeignKey(User, on_delete=models.CASCADE)
-# 	payment_bool = models.BooleanField(default=False)
-# 	stripe_checkout_id = models.CharField(max_length=500)
+class WalletTransaction(models.Model):
 
+    TRANSACTION_TYPES = (
+        ('deposit', 'deposit'),
+        ('transfer', 'transfer'),
+        ('withdraw', 'withdraw'),
+    )
+    wallet = models.ForeignKey(Wallet, null=True, on_delete=models.CASCADE)
+    transaction_type = models.CharField(
+        max_length=200, null=True,  choices=TRANSACTION_TYPES)
+    amount = models.DecimalField(max_digits=100, null=True, decimal_places=2)
+    timestamp = models.DateTimeField(default=timezone.now, null=True)
+    status = models.CharField(max_length=100, default="pending")
+    paystack_payment_reference = models.CharField(max_length=100, default='', blank=True)
 
-# @receiver(post_save, sender=User)
-# def create_user_payment(sender, instance, created, **kwargs):
-# 	if created:
-# 		UserPayment.objects.create(app_user=instance)
+    def __str__(self):
+        return self.wallet.user.__str__()
