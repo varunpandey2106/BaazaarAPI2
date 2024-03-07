@@ -40,6 +40,8 @@ INSTALLED_APPS = [
 
     #downloads
     'rest_framework',
+    'rest_framework.authtoken',
+
     'django_countries',
     'phonenumber_field',
     'rest_framework_simplejwt',
@@ -51,6 +53,7 @@ INSTALLED_APPS = [
     'drf_yasg',
     'djoser',
     'django_twilio',
+
 
 
     #apps
@@ -149,8 +152,12 @@ REST_FRAMEWORK = {
     
         'rest_framework_simplejwt.authentication.JWTAuthentication',
         'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.TokenAuthentication',
 
-    )
+
+    ),
+    "DEFAULT_PERMISSION_CLASSES": ("rest_framework.permissions.IsAuthenticated",),
+
 
 }
 
@@ -214,4 +221,12 @@ TWILIO_PHONE_NUMBER=os.getenv("TWILIO_PHONE_NUMBER")
 FLW_SEC_KEY=os.getenv("FLW_SEC_KEY")
 FLW_PUB_KEY=os.getenv("FLW_PUB_KEY")
 
-PAYSTACK_SECRET_KEY=os.getenv("PAYSTACK_SECRET_KEY")
+PAYSTACK_SECRET_KEY = "sk_test_e25f266bec12c0e783a8ffe23c3d3cd2f1e19416"
+
+
+
+# {
+#     "username": "testuser",
+#     "email": "testuser@gmail.com",
+#     "password": "testuser123"
+# }
