@@ -20,18 +20,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get('SECRET_KEY', default='thisisahugesecret')
+SECRET_KEY = 'django-insecure-7s*fi42m)2%wd)9c61dltb70as%)ev7nq4w!34twuoqr2rwly8'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG = True
-DEBUG = 'RENDER' not in os.environ
-
+DEBUG = True
 
 ALLOWED_HOSTS = []
-
-RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME') 
-if RENDER_EXTERNAL_HOSTNAME:
-    ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
 
 
 # Application definition
@@ -227,7 +221,6 @@ TWILIO_PHONE_NUMBER=os.getenv("TWILIO_PHONE_NUMBER")
 FLW_SEC_KEY=os.getenv("FLW_SEC_KEY")
 FLW_PUB_KEY=os.getenv("FLW_PUB_KEY")
 
-PAYSTACK_SECRET_KEY = "sk_test_e25f266bec12c0e783a8ffe23c3d3cd2f1e19416"
 
 
 
