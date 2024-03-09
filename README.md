@@ -2,6 +2,9 @@
 
 BaazaarAPI2 is an E-commerce/E-Retail REST-API built using Django Rest Framework.
 It has oauth powered social login, Notifications with Twilio and payment integration with Paystack.
+It is an improved version of **[BaazaarAPI](https://github.com/varunpandey2106/BaazaarAPI.git)**
+
+
 
 
 ## Table of Contents
@@ -25,11 +28,11 @@ It has oauth powered social login, Notifications with Twilio and payment integra
 - **[Postman](https://www.postman.com/)**
 - **[Swagger](https://swagger.io/)**
 - **[PostgreSQL](https://www.postgresql.org/)**
-- **[Twilio]()**
-- **[Paystack]()**
-- **[Django allauth]()**
+- **[Twilio](https://www.twilio.com/en-us)**
+- **[Paystack](https://paystack.com/)**
+- **[Django allauth](https://docs.allauth.org/en/latest/)**
 - **[Docker](https://www.docker.com/)**
-- **[drawsql](https://www.docker.com/)**
+- **[Drawsql](https://drawsql.app/)**
 
 
 
@@ -41,9 +44,6 @@ It has oauth powered social login, Notifications with Twilio and payment integra
 - **Notifications**
 - **Payment Integration**
 - **Third party Integrations**
-
-
-
 
 
 
@@ -59,7 +59,7 @@ cd BaazaarAPI2
 code .
 ```
 
-2. Install dependencies
+**2. Install dependencies:**
 
 ```python
 cd BaazaarAPI2
@@ -73,6 +73,7 @@ pip install -r requirements.txt
 ```python
 python manage.py runserver
 ```
+
 
 
 
