@@ -23,9 +23,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-7s*fi42m)2%wd)9c61dltb70as%)ev7nq4w!34twuoqr2rwly8'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', 'varun2106.pythonanywhere.com']
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -195,10 +195,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
-import os
-
 STATIC_URL = 'static/'
-STATIC_ROOT=os.path.join(BASE_DIR,'static')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
@@ -224,11 +221,8 @@ TWILIO_PHONE_NUMBER=os.getenv("TWILIO_PHONE_NUMBER")
 FLW_SEC_KEY=os.getenv("FLW_SEC_KEY")
 FLW_PUB_KEY=os.getenv("FLW_PUB_KEY")
 
+PAYSTACK_SECRET_KEY = "sk_test_e25f266bec12c0e783a8ffe23c3d3cd2f1e19416"
 
 
 
-# {
-#     "username": "testuser",
-#     "email": "testuser@gmail.com",
-#     "password": "testuser123"
-# }
+
