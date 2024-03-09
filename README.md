@@ -87,6 +87,13 @@ python manage.py runserver
 
 ## Database:
 -**Create a postgres database and configure project settings, the schema architecture is as follows:**
+![Screenshot 2023-10-22 232420](https://github.com/varunpandey2106/DReactDashboard/assets/77747699/39cb8e2d-f133-4321-8b59-e5440b4121a6)
+
+
+https://github.com/varunpandey2106/DReactDashboard/assets/77747699/1fb70148-165a-4389-adca-828cddf4d6d1"
+
+<img width="877" alt="image" src="https://github.com/varunpandey2106/DReactDashboard/assets/77747699/39cb8e2d-f133-4321-8b59-e5440b4121a6">
+
 
 ## License
 
