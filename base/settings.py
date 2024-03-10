@@ -25,7 +25,9 @@ SECRET_KEY = 'django-insecure-7s*fi42m)2%wd)9c61dltb70as%)ev7nq4w!34twuoqr2rwly8
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
+CSRF_TRUSTED_ORIGINS = ["http://*.on-acorn.io", "https://*.on-acorn.io"]
+
 
 
 # Application definition
@@ -130,19 +132,32 @@ WSGI_APPLICATION = 'base.wsgi.application'
 #     }
 # }
 
+# DATABASES = {
+
+#     'default': {
+
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'BaazaarAPI',
+#         'USER': 'varunpandey',
+#         'PASSWORD': 'boombamboom',
+#         'HOST': 'localhost',
+#         'PORT': '5432',
+
+#     }
+
+# }
+
+import os
+
 DATABASES = {
-
-    'default': {
-
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'BaazaarAPI',
-        'USER': 'varunpandey',
-        'PASSWORD': 'boombamboom',
-        'HOST': 'localhost',
-        'PORT': '5432',
-
+    "default": {
+        "ENGINE": "django.db.backends.mysql",
+        "NAME": os.getenv("MARIADB_DATABASE"),
+        "USER": os.getenv("MARIADB_USER"),
+        "PASSWORD": os.getenv("MARIADB_ROOT_PASSWORD"),
+        "HOST": os.getenv("MARIADB_HOST"),
+        "PORT": os.getenv("MARIADB_PORT", 3306),
     }
-
 }
 
 
