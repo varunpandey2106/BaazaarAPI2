@@ -77,7 +77,6 @@ platformdirs
 pluggy
 prompt-toolkit
 psycopg2
-psycopg2-binary
 py
 pyasn1
 pycparser
