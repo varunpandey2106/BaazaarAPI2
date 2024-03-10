@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-7s*fi42m)2%wd)9c61dltb70as%)ev7nq4w!34twuoqr2rwly8
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = [".vercel.app", ".now.sh"]
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost','.vercel.app']
 
 
 
@@ -55,6 +55,7 @@ INSTALLED_APPS = [
     'drf_yasg',
     'djoser',
     'django_twilio',
+    'corsheaders',
 
 
 
@@ -80,6 +81,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
+
 
     "allauth.account.middleware.AccountMiddleware",
 
@@ -150,21 +153,14 @@ WSGI_APPLICATION = 'base.wsgi.application'
 import os
 
 DATABASES = {
-
     'default': {
-
-        'ENGINE': 'django.db.backends.postgresql',
-        'URL': os.getenv('POSTGRES_URL'),
-        'NAME': os.getenv('PGNAME'),
-        'USER': os.getenv('PGUSER'),
-        'PASSWORD': os.getenv('POSTGRES_PASSWORD'),
-        'HOST': os.getenv('PGHOST'),
-        'PORT': os.getenv('PGPORT'),
-
-
-
+        'ENGINE': os.getenv('DATABASE_ENGINE'),
+        'NAME': os.getenv('DATABASE_NAME'),
+        'USER': os.getenv('DATABASE_USER'),
+        'PASSWORD': os.getenv('DATABASE_PASSWORD'),
+        'HOST': os.getenv('DATABASE_HOST'),
+        'PORT': os.getenv('DATABASE_PORT'),
     }
-
 }
 
 
