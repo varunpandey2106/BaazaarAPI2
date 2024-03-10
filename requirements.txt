@@ -25,6 +25,7 @@ coverage
 cryptography
 defusedxml
 distlib
+dj-database-url
 Django
 django-allauth
 django-colorfield
@@ -84,6 +85,7 @@ pycparser
 pydantic
 pydantic_core
 PyJWT
+PyMySQL
 pyparsing
 pytest
 pytest-asyncio
@@ -130,4 +132,4 @@ wcwidth
 wheel
 whitenoise
 yarl
-mysqlclient
+
