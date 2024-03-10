@@ -79,8 +79,12 @@ python manage.py runserver
 
 -**access at:**
 -***http://127.0.0.1:8000/***
+-***https://baazaarapi2-1.onrender.com/***
+
+
 
 ## API DOCUMENTATION:
+**Visit https://baazaarapi2-1.onrender.com/swagger/ for API documentation** 
 
 
 
