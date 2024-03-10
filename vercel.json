@@ -10,5 +10,9 @@
         "src": "/(.*)",
         "dest": "base/wsgi.py"
       }
-    ]
-}
+    ],
+    "env": {
+      "PG_CONFIG_PATH": "/opt/homebrew/opt/postgresql@15/bin/pg_config"
+    }
+  }
+  
