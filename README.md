@@ -80,6 +80,10 @@ python manage.py runserver
 -***http://127.0.0.1:8000/***
 -***https://baazaarapi2-1.onrender.com/***
 
+**4. Docker:**
+
+-***https://hub.docker.com/repository/docker/varunpandey2106/baazaarapi/general***
+
 
 
 ## API DOCUMENTATION:
